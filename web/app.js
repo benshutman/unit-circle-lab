@@ -111,7 +111,7 @@ function renderValues(){
     return `<button type="button" class="function-card" data-fn="${f}" style="--function-color:${colors[f]}" aria-pressed="${state.selected===f}" aria-label="${names[f]}: ${top} over ${bottom}, ${sides[top].name} over ${sides[bottom].name}. At ${decimal(state.deg)} degrees: ${exact(v[f])??decimal(v[f])}. ${state.mode==='inverse'?'View its forward graph.':'Select graph.'}"><span class="fn-title"><span>${f} θ =</span>${sideRatio(f)}</span><span class="fn-meaning">${wordRatio(f)}</span><span class="fn-substitution math">${valueRatio(f)}</span><span class="fn-value${v[f]===null?' undefined':''}">${v[f]===null?'':isExact(v[f])?'= ':'≈ '}${display(v[f])}</span><span class="fn-decimal">${v[f]===null?`${bottom} = 0 · undefined`:isExact(v[f])?'≈ '+decimal(v[f]):'rounded to 5 places'}</span></button>`;
   }).join('');
   $('values-title').textContent=state.mode==='inverse'?'Values at the answer angle':'All six functions';
-  $('values-hint').textContent=state.mode==='inverse'?'Select to explore forward':'Select one to explore';
+  $('values-hint').textContent=state.mode==='inverse'?'Select a function to graph in angle mode':'Select a function to graph';
 }
 function renderExplanation(){
   const n=normalize(state.deg),r=reference(state.deg),v=values(state.deg),fn=state.mode==='inverse'?state.inverseFn:state.selected;

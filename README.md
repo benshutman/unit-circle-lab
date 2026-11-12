@@ -45,3 +45,5 @@ print(exact(values(30)["sin"]))  # 1/2
 Undefined values are `None`. Angles are in degrees internally. Side a and b carry coordinate signs; geometric lengths are their absolute values. The inverse conventions match the Site: arccsc = arcsin(1/v), arcsec = arccos(1/v), arccot in (0°,180°). Textbook conventions may differ.
 
 GitHub Pages serves the four files in `web/` directly. Push changes to `main` to redeploy.
+
+The original inspiration was the [Math Is Fun interactive unit circle](https://www.mathsisfun.com/algebra/trig-interactive-unit-circle.html).
