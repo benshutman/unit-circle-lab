@@ -1,0 +1,4 @@
+{
+  "version": "0.2.0",
+  "configurations": [{"name": "Run Unit Circle Lab", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/app.py", "console": "integratedTerminal"}]
+}

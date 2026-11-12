@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Unit Circle Lab — All six trig functions & inverses</title>
+  <meta name="description" content="A touch-friendly unit circle with exact values, six trig functions, inverse principal angles, and linked graphs.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23152e50'/%3E%3Ccircle cx='20' cy='20' r='13' fill='none' stroke='white' stroke-width='2'/%3E%3Cpath d='M20 20L29 11M20 20H29V11' fill='none' stroke='%237dd3fc' stroke-width='2'/%3E%3Ccircle cx='29' cy='11' r='3' fill='%23fbbf24'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 20h34M20 3v34" stroke="currentColor" opacity=".3"/><path d="M20 20L31 9M20 20H31V9" fill="none" stroke="#7dd3fc" stroke-width="2"/><circle cx="31" cy="9" r="3" fill="#fbbf24"/></svg><h1>Unit circle <span>lab</span></h1></div><span class="header-note">Angles. Ratios. Connections.</span></header>
+<main>
+<div class="modebar"><div class="tabs" role="tablist" aria-label="Calculation mode"><button type="button" id="direct-tab" role="tab" aria-selected="true" aria-controls="workspace" tabindex="0">Angle → values</button><button type="button" id="inverse-tab" role="tab" aria-selected="false" aria-controls="workspace" tabindex="-1">Value → angle <span>inverse</span></button></div><div class="units" role="group" aria-label="Angle units"><button type="button" data-unit="deg" aria-pressed="true">Degrees</button><button type="button" data-unit="rad" aria-pressed="false">Radians</button></div></div>
+<div id="workspace" class="workspace" role="tabpanel" aria-labelledby="direct-tab">
+<section class="circle-panel panel" aria-label="Interactive unit circle">
+  <div class="panel-heading"><div><span class="eyebrow">THE UNIT CIRCLE</span><p id="circle-instruction">Drag the point or tap anywhere on the circle.</p></div><label class="snap"><input id="snap" type="checkbox" checked> Snap to special angles</label></div>
+  <svg id="circle" viewBox="0 0 600 540" role="img" aria-label="Unit circle showing a 30 degree angle"></svg>
+  <div id="side-key" class="side-key" aria-label="Triangle sides and signed values"></div>
+  <p id="side-note" class="side-note"></p>
+  <div class="coordinates"><span class="math">(x, y) = (cos θ, sin θ)</span><strong id="coordinate-values" class="math"></strong></div>
+  <div class="circle-facts"><div><span>Location</span><strong id="quadrant"></strong></div><div><span>Reference angle</span><strong id="reference"></strong></div><div><span>Positive functions</span><strong id="signs"></strong></div></div>
+</section>
+<section class="controls-panel" aria-label="Calculation controls and results">
+  <div class="panel input-panel">
+    <div id="direct-controls"><div class="control-heading"><label for="angle-input">Set your angle <span class="math">θ</span></label><button type="button" id="reset" class="text-button">Reset</button></div><form id="angle-form" class="input-row"><input id="angle-input" type="text" value="30" autocomplete="off" spellcheck="false" aria-describedby="angle-hint input-error" aria-label="Angle expression"><span id="input-unit">°</span><button type="submit" class="primary">Apply</button></form><p class="hint" id="angle-hint">Enter any angle, including negatives and full turns.</p><div class="slider-row"><button type="button" class="step" id="step-back" aria-label="Decrease angle by one degree">−</button><input id="angle-slider" type="range" min="0" max="360" step="1" value="30" aria-label="Angle within one turn"><button type="button" class="step" id="step-next" aria-label="Increase angle by one degree">+</button></div><div class="preset-row" id="angle-presets" aria-label="Special angles"></div></div>
+    <div id="inverse-controls" hidden><label for="inverse-function">Choose an inverse function</label><div class="inverse-entry"><select id="inverse-function" aria-label="Inverse function"><option value="sin">arcsin / sin⁻¹</option><option value="cos">arccos / cos⁻¹</option><option value="tan" selected>arctan / tan⁻¹</option><option value="csc">arccsc / csc⁻¹</option><option value="sec">arcsec / sec⁻¹</option><option value="cot">arccot / cot⁻¹</option></select></div><form id="inverse-form" class="input-row"><input id="inverse-input" type="text" value="-sqrt(3)" aria-label="Value for inverse function" aria-describedby="inverse-hint input-error" autocomplete="off" spellcheck="false"><button class="primary" type="submit">Solve</button></form><p id="inverse-hint" class="hint">Use fractions or radicals: 1/2, sqrt(2)/2, −sqrt(3).</p><div id="inverse-presets" class="preset-row" aria-label="Example input values"></div></div>
+    <p id="input-error" class="error" role="alert" hidden></p>
+    <div id="angle-result" class="angle-result" aria-live="polite"></div>
+  </div>
+  <div id="branch-panel" class="panel branch-panel" hidden></div>
+  <div class="values-heading"><h2 id="values-title">All six functions</h2><span id="values-hint">Select one to explore</span></div>
+  <p class="ratio-memory"><strong>SOH · CAH · TOA</strong><span>csc, sec, cot flip the sin, cos, tan fractions.</span></p>
+  <div class="function-grid" id="function-grid" aria-label="All six trig values"></div>
+  <p class="hint result-note">Exact values when available; decimals rounded to 5 places.</p>
+</section>
+</div>
+<section class="panel graph-panel" aria-labelledby="graph-title"><div class="graph-header"><div><span class="eyebrow">THE CONNECTED GRAPH</span><h2 id="graph-title"></h2></div><span id="graph-caption" class="hint"></span></div><svg id="graph" viewBox="0 0 1040 260" role="img" aria-label="Trigonometric function graph"></svg><div class="graph-footer" id="graph-footer"></div></section>
+<section class="explain-grid"><div class="panel explanation" id="explanation"></div><div class="panel reminder"><h2>Inverse ≠ reciprocal</h2><p><span class="math">sin⁻¹(v) = arcsin(v)</span> gives an <strong>angle</strong>.</p><p><span class="math">1 / sin θ = csc θ = c/a</span> gives a <strong>ratio</strong>.</p><p class="hint">The inverse chooses one principal angle. Other angles may have the same trig value.</p></div></section>
+<footer>Built for exploring trig, one angle at a time. <a href="https://www.mathsisfun.com/algebra/trig-interactive-unit-circle.html" target="_blank" rel="noopener noreferrer">Original inspiration: Math Is Fun</a></footer>
+</main><script type="module" src="app.js"></script>
+</body></html>
